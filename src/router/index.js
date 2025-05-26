@@ -45,22 +45,22 @@ const notAuth = async (to, from, next) => {
 
 const routes = [
     // General
-    { path: '/', component: Home },
-    { path: '/games', component: Games, beforeEnter: requireAuth },
-    { path: '/about', component: About},
-    { path: '/forum', component: Forum},
+    { path: 'TapNPlayHost/', component: Home },
+    { path: 'TapNPlayHost/games', component: Games, beforeEnter: requireAuth },
+    { path: 'TapNPlayHost/about', component: About},
+    { path: 'TapNPlayHost/forum', component: Forum},
     // Authorisation
-    { path: '/login', component: Login, beforeEnter: notAuth },
-    { path: '/register', component: Register, beforeEnter: notAuth },
+    { path: 'TapNPlayHost/login', component: Login, beforeEnter: notAuth },
+    { path: 'TapNPlayHost/register', component: Register, beforeEnter: notAuth },
     // Profile
-    { path: '/profile', component: Profile, beforeEnter: requireAuth },
-    { path: '/badges', component: Badges, beforeEnter: requireAuth},
-    { path: '/records', component: Records, beforeEnter: requireAuth},
+    { path: 'TapNPlayHost/profile', component: Profile, beforeEnter: requireAuth },
+    { path: 'TapNPlayHost/badges', component: Badges, beforeEnter: requireAuth},
+    { path: 'TapNPlayHost/records', component: Records, beforeEnter: requireAuth},
     // Games
-    { path: '/games/minesweeper', component: Minesweeper, beforeEnter: requireAuth },
-    { path: '/games/candycrush', component: CandyCrush, beforeEnter: requireAuth },
-    { path: '/games/tetris', component: Tetris, beforeEnter: requireAuth },
-    { path: '/games/snake', component: Snake, beforeEnter: requireAuth },
+    { path: 'TapNPlayHost/games/minesweeper', component: Minesweeper, beforeEnter: requireAuth },
+    { path: 'TapNPlayHost/games/candycrush', component: CandyCrush, beforeEnter: requireAuth },
+    { path: 'TapNPlayHost/games/tetris', component: Tetris, beforeEnter: requireAuth },
+    { path: 'TapNPlayHost/games/snake', component: Snake, beforeEnter: requireAuth },
 ];
 
 const router = createRouter({
