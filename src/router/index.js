@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 import Home from '/src/pages/Home.vue';
 import Login from '/src/pages/Login.vue';
 import Register from '/src/pages/Register.vue';
@@ -8,11 +8,13 @@ import About from '/src/pages/About.vue';
 import Badges from '/src/pages/Badges.vue';
 import Records from '/src/pages/Records.vue';
 import Forum from '/src/pages/Forum.vue';
-//games
+
+// Games
 import Minesweeper from '/src/games/Minesweeper.vue';
 import CandyCrush from '/src/games/CandyCrush.vue';
 import Tetris from '/src/games/Tetris.vue';
 import Snake from '/src/games/Snake.vue';
+
 import { auth } from '/src/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 
@@ -45,28 +47,30 @@ const notAuth = async (to, from, next) => {
 
 const routes = [
     // General
-    { path: 'TapNPlayHost/', component: Home },
-    { path: 'TapNPlayHost/games', component: Games, beforeEnter: requireAuth },
-    { path: 'TapNPlayHost/about', component: About},
-    { path: 'TapNPlayHost/forum', component: Forum},
-    // Authorisation
-    { path: 'TapNPlayHost/login', component: Login, beforeEnter: notAuth },
-    { path: 'TapNPlayHost/register', component: Register, beforeEnter: notAuth },
+    { path: '/', component: Home },
+    { path: '/games', component: Games, beforeEnter: requireAuth },
+    { path: '/about', component: About },
+    { path: '/forum', component: Forum },
+
+    // Auth
+    { path: '/login', component: Login, beforeEnter: notAuth },
+    { path: '/register', component: Register, beforeEnter: notAuth },
+
     // Profile
-    { path: 'TapNPlayHost/profile', component: Profile, beforeEnter: requireAuth },
-    { path: 'TapNPlayHost/badges', component: Badges, beforeEnter: requireAuth},
-    { path: 'TapNPlayHost/records', component: Records, beforeEnter: requireAuth},
+    { path: '/profile', component: Profile, beforeEnter: requireAuth },
+    { path: '/badges', component: Badges, beforeEnter: requireAuth },
+    { path: '/records', component: Records, beforeEnter: requireAuth },
+
     // Games
-    { path: 'TapNPlayHost/games/minesweeper', component: Minesweeper, beforeEnter: requireAuth },
-    { path: 'TapNPlayHost/games/candycrush', component: CandyCrush, beforeEnter: requireAuth },
-    { path: 'TapNPlayHost/games/tetris', component: Tetris, beforeEnter: requireAuth },
-    { path: 'TapNPlayHost/games/snake', component: Snake, beforeEnter: requireAuth },
+    { path: '/games/minesweeper', component: Minesweeper, beforeEnter: requireAuth },
+    { path: '/games/candycrush', component: CandyCrush, beforeEnter: requireAuth },
+    { path: '/games/tetris', component: Tetris, beforeEnter: requireAuth },
+    { path: '/games/snake', component: Snake, beforeEnter: requireAuth },
 ];
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(import.meta.env.BASE_URL),
     routes,
 });
 
 export default router;
-
